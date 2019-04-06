@@ -90,9 +90,10 @@ class Application extends BaseApplication
     /**
      * @return string
      */
-    public function getConfigFile()
+    public function getConfigFile($path = null)
     {
-        return Path::canonicalize('~/.acmephp/acmephp.conf');
+        $path = $path ?: '~/.acmephp';
+        return Path::canonicalize($path . '/acmephp.conf');
     }
 
     /**

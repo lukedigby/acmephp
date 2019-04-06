@@ -76,7 +76,7 @@ EOF
     {
         $config = $this->getConfig(Path::makeAbsolute($input->getArgument('config'), getcwd()));
         
-        $this->getContainer()->setParameter('app.storage_directory', $config['storage_path'].'/master');
+        $this->getContainer($config['storage_path'])->setParameter('app.storage_directory', $config['storage_path'].'/master');
         $this->getContainer()->setParameter('app.backup_directory', $config['storage_path'].'/master');
         $keyOption = $this->createKeyOption($config['key_type']);
 
