@@ -75,6 +75,9 @@ EOF
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $config = $this->getConfig(Path::makeAbsolute($input->getArgument('config'), getcwd()));
+        
+        $this->getContainer()->setParameter('app.storage_directory', $config['storage_path'].'/master');
+        $this->getContainer()->setParameter('app.backup_directory', $config['storage_path'].'/master');
         $keyOption = $this->createKeyOption($config['key_type']);
 
         $this->register($config['contact_email'], $keyOption);
